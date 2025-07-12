@@ -59,7 +59,7 @@ cd video-encoder-app
 # Step 2: Build and start services
 docker-compose up --build
 
-# Step 3: Upload a video via CURL (or Postman)
+# Step 3: Upload a video via CURL 
 curl -F "file=@/path/to/your/video.mp4" http://localhost:8000/upload
 
 ---
