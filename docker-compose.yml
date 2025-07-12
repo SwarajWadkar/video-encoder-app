@@ -1,0 +1,37 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - uploads:/app/uploads
+    depends_on:
+      - redis
+      - db
+
+  redis:
+    image: redis:6-alpine
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: videos
+
+  worker:  
+    build: .
+    command: ["python", "worker/worker.py"]
+    volumes:
+      - .:/app
+      - uploads:/app/uploads
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - redis
+      - web
+
+
+volumes:
+  uploads:
