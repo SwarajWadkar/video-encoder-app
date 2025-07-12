@@ -52,6 +52,8 @@ video-encoder-app/
 
 # Step 1: Clone the repository
 git clone https://github.com/SwarajWadkar/video-encoder-app.git
+
+
 cd video-encoder-app
 
 # Step 2: Build and start services
